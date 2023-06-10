@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<style>
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px
+}
+
+.container div {
+	margin: 10px;
+}
+
+.form_data {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.form_data button {
+	width: 25%;
+}
+
+.form_data input {
+	flex-grow: 1;
+}
+</style>
+</h:head>
+<body>
+
+	<h:form>
+		<div class="container">
+			<p:panel header="Calculatrice V1">
+				<div class="form_data">
+					<p:outputLabel value="Nombre 1 : " />
+					<p:inputText value="#{calculBean.nombre1}" />
+				</div>
+
+				<div class="form_data">
+					<p:outputLabel value="Nombre 2 : " />
+					<p:inputText value="#{calculBean.nombre2}" />
+				</div>
+
+				<div class="form_data">
+					<p:commandButton value="Somme" action="#{calculBean.somme()}" update="@form"
+						styleClass="ui-button-secondary" icon="pi pi-plus-circle" />
+					<p:commandButton value="´Produit" action="#{calculBean.produit()}" update="res"
+						styleClass="ui-button-success" />
+					<p:commandButton value="Soustraction" action="#{calculBean.moins()}" update="res"
+						styleClass="ui-button-info" icon="pi pi-minus-circle"/>
+					<p:commandButton value="Division" action="#{calculBean.division()}" update="res"
+						styleClass="ui-button-warning" />
+				</div>
+
+				<div class="form_data">
+					<p:outputLabel value="Resultat " />
+					<p:inputText value="#{calculBean.res}" disabled="true" id="res"/>
+				</div>
+			</p:panel>
+		</div>
+	</h:form>
+</body>
+</html>
